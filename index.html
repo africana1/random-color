@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="password.ico" type="image/x-icon" />
+    <title>Color Gen</title>
+    <style>
+      body {
+        background: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div class="container text-center mt-4">
+      <div class="row">
+        <div class="col-md-8 offset-2">
+          <div class="card border-primary bg-info border-0">
+            <div class="card-body">
+              <h5 class="card-title">RGB Value: <span id="colorName1"></span></h5>
+              <button class="btn btn-dark" id="btnColorRGB">Change Color</button>
+            </div>
+          </div>
+          <br />
+
+          <div class="card border-primary bg-info border-0">
+            <div class="card-body">
+              <h5 class="card-title">Hex Value: <span id="colorName2"></span></h5>
+              <button class="btn btn-dark" id="btnColorHex">Change Color</button>
+            </div>
+          </div>
+          <br />
+
+          <div class="card border-primary bg-info border-0">
+            <div class="card-body">
+              <h5 class="card-title">RGBA Value: <span id="colorName3"></span></h5>
+              <button class="btn btn-dark" id="btnColorRGBA">Change Color</button>
+            </div>
+          </div>
+          <br />
+
+          <div class="card border-primary bg-info border-0">
+            <div class="card-body">
+              <h5 class="card-title">HSL Value: <span id="colorName4"></span></h5>
+              <button class="btn btn-dark" id="btnColorHSL">Change Color</button>
+            </div>
+          </div>
+          <br />
+
+          <div class="card border-primary bg-info border-0">
+            <div class="card-body">
+              <h5 class="card-title">HSLA Value: <span id="colorName5"></span></h5>
+              <button class="btn btn-dark" id="btnColorHSLA">Change Color</button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <script src="color.js"></script>
+  </body>
+</html>

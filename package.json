@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  },
+  "name": "randomcolor",
+  "version": "1.0.0",
+  "description": "A rgb, rgba, hex, hsl & hsla random color generator",
+  "main": "color.js",
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/africana1/random-color.git"
+  },
+  "keywords": [
+    "RGB",
+    "RGBA",
+    "HEX",
+    "HSL",
+    "HSLA",
+    "Color-Gen"
+  ],
+  "author": "Quimby africana",
+  "license": "MIT",
+  "homepage": "https://africana1.github.io/random-color",
+  "bugs": {
+    "url": "https://github.com/africana1/random-color/issues"
+  }
+}
