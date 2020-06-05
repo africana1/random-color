@@ -40,7 +40,7 @@ function randomHslPair() {
 
 function helpChangeColor(prim, compliment) {
   body.style.backgroundColor = prim;
-  randomDiv.style.background = hexGenValue();
+  randomDiv.style.backgroundColor = hexGenValue();
   btnRandomColor.style.cssText = 'color: ' + prim + ';background-color: ' + compliment + ';';
 }
 
