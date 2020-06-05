@@ -1,3 +1,7 @@
+//audio files
+const long_audio = new Audio('feelings.aac');
+const short_audio = new Audio('short.wav');
+
 //getting all elements
 
 let body = document.querySelector('#body');
@@ -17,6 +21,57 @@ let colorName4 = document.querySelector('#colorName4');
 let btnHSLA = document.querySelector('#btnColorHSLA');
 let colorName5 = document.querySelector('#colorName5');
 
+let btnRandomColor = document.querySelector('#btnRandomColor');
+let randomDiv = document.querySelector('#random-div');
+
+btnRandomColor.addEventListener('click', randomColorSound);
+
+function randomHslPair() {
+  let h = Math.floor(Math.random() * 360);
+  let s = Math.floor(Math.random() * 100);
+  let l = Math.floor(Math.random() * 100);
+
+  let ch = () => (h <= 180 ? h + 180 : h - 180);
+  let cs = () => (s <= 50 ? s + 50 : s - 50);
+  let cl = () => (l <= 50 ? l + 50 : l - 50);
+
+  return [`hsl(${h},${s}%,${l}%)`, `hsl(${ch()},${cs()}%,${cl()}%)`];
+}
+
+function helpChangeColor(prim, compliment) {
+  body.style.backgroundColor = prim;
+  randomDiv.style.background = hexGenValue();
+  btnRandomColor.style.cssText = 'color: ' + prim + ';background-color: ' + compliment + ';';
+}
+
+function randomColorSound() {
+  let r = Math.floor(Math.random() * 10);
+
+  if (r >= 7) {
+    long_audio.play();
+
+    let [pri, comp] = randomHslPair();
+    helpChangeColor(pri, comp);
+
+    (function delayedLoop(i) {
+      setTimeout(function () {
+        let [pri, comp] = randomHslPair();
+        helpChangeColor(pri, comp);
+        if (--i) {
+          delayedLoop(i);
+        } else {
+          long_audio.pause();
+          long_audio.currentTime = 0;
+        }
+      }, 1500);
+    })(r);
+  } else {
+    short_audio.play();
+    let [pri, comp] = randomHslPair();
+    helpChangeColor(pri, comp);
+  }
+}
+
 //adding event listeners
 btnRGB.addEventListener('click', rgbChange);
 btnHex.addEventListener('click', hexChange);
@@ -34,13 +89,6 @@ function rgbChange() {
   colorName1.innerText = randomColorRGB;
 }
 
-//func to generate rgba value
-function hexChange() {
-  let randomColorHex = '#' + hexGen() + hexGen() + hexGen() + hexGen() + hexGen() + hexGen();
-  body.style.background = randomColorHex;
-  colorName2.innerText = randomColorHex;
-}
-
 //func to generate (a-f) && (0-9)
 function hexGen() {
   let n1 = String.fromCharCode(Math.floor(Math.random() * 6) + 97); // returns 0 - 9
@@ -51,6 +99,18 @@ function hexGen() {
   hexValue = hex[Math.floor(Math.random() * hex.length)]; //use hex length to randomize either n1 or a1
 
   return hexValue;
+}
+
+//hsl value
+function hexGenValue() {
+  return `#${hexGen()}${hexGen()}${hexGen()}${hexGen()}${hexGen()}${hexGen()}`;
+}
+
+//func to generate rgba value
+function hexChange() {
+  let randomColorHex = hexGenValue();
+  body.style.background = randomColorHex;
+  colorName2.innerText = randomColorHex;
 }
 
 //func to generate rgba value
